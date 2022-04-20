@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home page">
     <h1 class="text-center">Home</h1>
     <div class="justify-content-center d-flex"></div>
   </div>
@@ -11,3 +11,5 @@ export default {
   components: {},
 };
 </script>
+
+<style scoped></style>

@@ -4,16 +4,16 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const cors = require("cors");
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8081;
 
 const app = express();
 
 mongoose
-  .connect("mongodb://localhost:27017/server")
-  .then(async () => {
-    console.log("Successfully connected to mongodb");
-  })
-  .catch((err) => console.log(err));
+    .connect("mongodb://localhost:27017/server")
+    .then(async() => {
+        console.log("Successfully connected to mongodb");
+    })
+    .catch((err) => console.log(err));
 
 app.use(cors());
 app.use(express.json());

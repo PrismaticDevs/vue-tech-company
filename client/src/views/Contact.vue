@@ -1,20 +1,41 @@
 <template>
-  <h1>Send Us a Message</h1>
-  <form ref="form" @submit.prevent="sendEmail">
-    <label>Name</label>
-    <input type="text" name="user_name" />
-    <label>Email</label>
-    <input type="email" name="user_email" />
-    <label>Message</label>
-    <textarea name="message"></textarea>
-    <input class="btn btn-primary" type="submit" value="Send" />
-  </form>
+  <section class="page">
+    <h1>Send Us a Message</h1>
+    <form ref="form" @submit.prevent="sendEmail">
+      <label>Name</label>
+      <input type="text" name="user_name" />
+      <label>Email</label>
+      <input type="email" name="user_email" />
+      <label>Message</label>
+      <textarea name="message"></textarea>
+      <input class="btn btn-primary" type="submit" value="Send" />
+    </form>
+  </section>
+  <!-- Modal -->
+  <!-- <div class="d-flex justify-content-center align-items-center"> -->
+  <div id="modal" class="">
+    <!-- Modal -->
+    <div v-if="modal" class="p-3 bg-primary">
+      <h1>Message successfully sent</h1>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" @click="modal = false" class="btn btn-warning">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
 </template>
 
 <script>
 import emailjs from "@emailjs/browser";
 
 export default {
+  data() {
+    return {
+      modal: false,
+    };
+  },
   methods: {
     sendEmail() {
       emailjs
@@ -26,7 +47,7 @@ export default {
         )
         .then(
           (result) => {
-            alert("SUCCESS!");
+            this.modal = true;
           },
           (error) => {
             alert("FAILED...");
@@ -42,7 +63,6 @@ form {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 25%;
   margin: 0 auto;
   border-radius: 5px;
   background-color: #e1e1e1;
