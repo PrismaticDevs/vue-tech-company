@@ -17,7 +17,14 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./assets/img/spiral.jpeg");
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    13deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 11%,
+    rgba(0, 212, 255, 1) 91%
+  );
+
   background-position: center center;
   background-repeat: no-repeat;
   width: 100vw;

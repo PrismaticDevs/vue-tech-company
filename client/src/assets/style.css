@@ -3,7 +3,6 @@
 }
 
 .page {
-    background: white;
     width: fit-content;
     height: fit-content;
     margin: 0 auto;
@@ -12,11 +11,6 @@
     box-shadow: 1em 1em 1em 1em rgba(0, 0, 0, 0.5);
 }
 
-#modal {
-    z-index: 1;
-    width: 30%;
-    height: 30%;
-    position: absolute;
-    left: 5vw;
-    top: 35vh;
+h1 {
+    color: white;
 }

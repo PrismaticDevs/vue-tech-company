@@ -1,6 +1,6 @@
 <template>
-  <section class="page">
-    <h1>Send Us a Message</h1>
+  <section class="page mt-3">
+    <h1>Leave a Message</h1>
     <form ref="form" @submit.prevent="sendEmail">
       <label>Name</label>
       <input type="text" name="user_name" />
@@ -11,31 +11,20 @@
       <input class="btn btn-primary" type="submit" value="Send" />
     </form>
   </section>
-  <!-- Modal -->
-  <!-- <div class="d-flex justify-content-center align-items-center"> -->
-  <div id="modal" class="">
-    <!-- Modal -->
-    <div v-if="modal" class="p-3 bg-primary">
-      <h1>Message successfully sent</h1>
-      <div class="modal-footer d-flex justify-content-center">
-        <button type="button" @click="modal = false" class="btn btn-warning">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- </div> -->
+  <Modal v-if="modal" title="Success!" />
 </template>
 
 <script>
 import emailjs from "@emailjs/browser";
-
+import Modal from "../components/Modal.vue";
 export default {
+  name: "Contact",
   data() {
     return {
       modal: false,
     };
   },
+  components: { Modal },
   methods: {
     sendEmail() {
       emailjs
@@ -64,10 +53,7 @@ form {
   justify-content: center;
   flex-direction: column;
   margin: 0 auto;
-  border-radius: 5px;
-  background-color: #e1e1e1;
-  padding: 20px;
-  box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.5);
+  color: white;
 }
 h1 {
   background: none;
