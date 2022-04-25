@@ -54,6 +54,7 @@ form {
   flex-direction: column;
   margin: 0 auto;
   color: white;
+  width: 33%;
 }
 h1 {
   background: none;

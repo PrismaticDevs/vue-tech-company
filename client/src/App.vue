@@ -24,15 +24,7 @@ export default {
     rgba(9, 9, 121, 1) 11%,
     rgba(0, 212, 255, 1) 91%
   );
-
-  background-position: center center;
-  background-repeat: no-repeat;
-  width: 100vw;
   height: 100vh;
-}
-.back {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  overflow: scroll;
 }
 </style>

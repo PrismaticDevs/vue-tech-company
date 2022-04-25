@@ -1,16 +1,24 @@
 * {
     font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-
-.page {
-    width: fit-content;
-    height: fit-content;
-    margin: 0 auto;
-    padding: 3rem;
-    border-radius: 2em;
-    box-shadow: 1em 1em 1em 1em rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 h1 {
     color: white;
+}
+
+.p {
+    margin: 0;
+}
+
+.fa-star {
+    color: gold;
+}
+
+.page {
+    padding-bottom: 10%;
+}
+
+.green {
+    color: green;
 }
