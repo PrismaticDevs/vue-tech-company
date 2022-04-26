@@ -5,8 +5,6 @@ router.route('/')
     .get(getAllUsers)
     .post(createUser)
 
-router.post('/register', createUser)
-
 router.get('/logout', logout)
 
 router.route('/login')

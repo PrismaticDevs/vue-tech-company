@@ -37,6 +37,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/register">Register</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" @click="logout" href="/login">Logout</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -44,7 +47,15 @@
 </template>
 
 <script>
-export default {};
+import axios from "../../axios";
+export default {
+  methods: {
+    async logout() {
+      await axios.get("/users/logout");
+      this.$router.push("/login");
+    },
+  },
+};
 </script>
 
 <style>

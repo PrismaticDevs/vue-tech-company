@@ -90,6 +90,11 @@ export default {
           if (res.data.trim() === "Invalid login credentials") {
             this.success = false;
             this.err = true;
+          } else if (
+            res.data.trim() === "You must enter an email and a password"
+          ) {
+            this.success = false;
+            this.err = true;
           } else {
             this.success = true;
             this.err = false;

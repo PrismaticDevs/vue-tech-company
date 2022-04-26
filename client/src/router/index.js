@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import axios from '../../axios'
 
 const routes = [{
         path: "/",
@@ -54,5 +55,22 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
 });
+
+router.beforeEach(() => {
+    const navCheck = async() => {
+        try {
+            await axios.get('/users/login')
+                .then(res => {
+                    if (res.data) {
+                        console.log(res.data);
+                        return
+                    }
+                })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    navCheck()
+})
 
 export default router;

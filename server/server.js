@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/server')
+mongoose.connect('mongodb://localhost:27017/vue-tech-company')
     .then(async() => {
         console.log('Successfully connected to mongodb');
     })

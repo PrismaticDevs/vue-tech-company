@@ -1,4 +1,7 @@
 <template>
+  <p class="h1 text-center" :class="{ 'text-danger': err, green: success }">
+    {{ response }}
+  </p>
   <h1 class="text-center">Register</h1>
   <form>
     <!-- Password input -->
@@ -8,6 +11,7 @@
         id="form2Example0"
         class="form-control"
         autocomplete="on"
+        v-model="username"
       />
       <label class="form-label" for="form2Example0">Username</label>
     </div>
@@ -18,6 +22,7 @@
         id="form2Example1"
         class="form-control"
         autocomplete="on"
+        v-model="email"
       />
       <label class="form-label" for="form2Example1">Email address</label>
     </div>
@@ -29,19 +34,24 @@
         id="form2Example2"
         class="form-control"
         autocomplete="on"
+        v-model="password"
       />
       <label class="form-label" for="form2Example2">Password</label>
     </div>
 
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4">
-      Sign in
+    <button
+      type="button"
+      class="btn btn-primary btn-block mb-4"
+      @click="register"
+    >
+      Register
     </button>
 
     <!-- Register buttons -->
     <div class="text-center">
       <p>
-        Have an account?
+        Already have an account?
         <router-link class="btn btn-success" to="/login">Login</router-link>
       </p>
       <p>or sign up with:</p>
@@ -66,7 +76,53 @@
 
 <script>
 import axios from "../../axios";
-export default {};
+export default {
+  data() {
+    return {
+      username: "",
+      email: "",
+      password: "",
+      response: "",
+      err: false,
+      success: false,
+    };
+  },
+  methods: {
+    goHome() {
+      this.$router.push("/");
+    },
+    async register(e) {
+      e.preventDefault();
+      await axios
+        .post("/users", {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+        })
+        .then((res) => {
+          this.response = res.data;
+          if (
+            this.response.includes("Password must be at least 8 characters")
+          ) {
+            this.err = true;
+            this.success = false;
+          } else if (this.response.includes("already has an account")) {
+            this.err = true;
+            this.success = false;
+          } else {
+            this.success = true;
+            this.err = false;
+            setTimeout(() => {
+              this.goHome();
+            }, 2500);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
