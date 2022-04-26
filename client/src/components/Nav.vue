@@ -32,13 +32,13 @@
             <a class="nav-link" href="/services">Services</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" @click="logout" href="/login">Logout</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/register">Register</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" @click="logout" href="/login">Logout</a>
           </li>
         </ul>
       </div>
@@ -49,10 +49,16 @@
 <script>
 import axios from "../../axios";
 export default {
+  // data() {
+  //   return {
+  //     auth: false,
+  //   };
+  // },
   methods: {
     async logout() {
       await axios.get("/users/logout");
       this.$router.push("/login");
+      this.auth = false;
     },
   },
 };
