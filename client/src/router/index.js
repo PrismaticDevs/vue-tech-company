@@ -56,21 +56,26 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach(() => {
-    const navCheck = async() => {
-        try {
-            await axios.get('/users/login')
-                .then(res => {
-                    if (res.data) {
-                        console.log(res.data);
-                        return
-                    }
-                })
-        } catch (error) {
-            console.log(error);
-        }
+const navCheck = async() => {
+    try {
+        await axios.get('/users/login')
+            .then(res => {
+                if (res.data) {
+                    let data = res.data
+                    return data;
+                } else {
+                    window.location.href = '/login'
+                }
+            })
+    } catch (error) {
+        console.log(error);
     }
-    navCheck()
+}
+
+router.beforeEach((to, from) => {
+    if (to.name === 'orders') {
+        navCheck()
+    }
 })
 
 export default router;
