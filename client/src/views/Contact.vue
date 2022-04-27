@@ -8,7 +8,7 @@
       <input type="email" name="user_email" />
       <label>Message</label>
       <textarea name="message"></textarea>
-      <input class="btn btn-primary" type="submit" value="Send" />
+      <input class="btn btn-primary mt-3" type="submit" value="Send" />
     </form>
   </section>
   <Modal v-if="modal" title="Success!" />
